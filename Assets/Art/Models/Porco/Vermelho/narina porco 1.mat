@@ -121,7 +121,7 @@ Material:
     - _OcclusionStrength: 1
     - _OutlineDepthSensitivity: 0.2
     - _OutlineNormalsSensitivity: 1
-    - _OutlineThickness: 4
+    - _OutlineThickness: 0.5
     - _Parallax: 0.02
     - _QueueOffset: 0
     - _ReceiveShadows: 1
