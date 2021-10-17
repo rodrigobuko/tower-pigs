@@ -28,8 +28,8 @@ public class Enemy : MonoBehaviour {
         navMeshAgent.speed = velocity;
     }
     
-    public void UpdateLife(float newLife) {
-        life = newLife;
+    public void UpdateLife(float damage) {
+        life -= damage;
         if (life <= 0) {
             Die();
         }
@@ -37,5 +37,6 @@ public class Enemy : MonoBehaviour {
 
     private void Die() {
         Debug.Log("e morreu...");
+        Destroy(gameObject);
     }
 }
