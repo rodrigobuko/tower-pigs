@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using Random = System.Random;
 
 public class PigMarket : MonoBehaviour
 {
@@ -25,7 +27,7 @@ public class PigMarket : MonoBehaviour
         
     }
 
-    public void BuyPig(GameObject pigWanted)//o porco não está surgindo no cercadinho
+    public void BuyPig(GameObject pigWanted)//o porco nï¿½o estï¿½ surgindo no cercadinho
     {
         if (!pigWanted)
             return;
@@ -33,6 +35,9 @@ public class PigMarket : MonoBehaviour
         if (_playerInventory.money < pigType.currentPrice)
             return;//avisar que o player nao tem dinheiro suficiente
         _playerInventory.money -= pigType.currentPrice;
+        float angle = Mathf.Deg2Rad * UnityEngine.Random.Range(0, 360);
+        pigSpawnPosition.x += (float)(0.5f * Mathf.Cos(angle));
+        pigSpawnPosition.z += (float)(0.5f * Mathf.Sin(angle));
         GameObject pigObject = Instantiate(GetPigPrefab(pigType), pigSpawnPosition, Quaternion.identity);
         playerPigs.Add(pigObject);
     }
