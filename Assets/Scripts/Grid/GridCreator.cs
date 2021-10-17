@@ -56,8 +56,6 @@ public class GridCreator : MonoBehaviour {
 
     private void FillTheGrid() {
         // place base 
-        var cityObject = Instantiate(city);
-        cityObject.transform.position = Vector3.zero;
         gridCellMat[row/2, column/2].occupied = true;
         gridCellMat[row/2, column/2 + 1].occupied = true;
         gridCellMat[row/2 + 1, column/2].occupied = true;
