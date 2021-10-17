@@ -14,6 +14,8 @@ public class TurretAction : MonoBehaviour
     private List<GameObject> currentBullets;
     private bool isAttacking;
     private bool notDetected;
+
+    public ParticleSystem particleSystem;
     
     private void Start() {
         enemiesAffected = new List<Enemy>();
@@ -71,6 +73,12 @@ public class TurretAction : MonoBehaviour
     private void Attack(Enemy enemy) {
         enemy.UpdateLife(towerSkill.damage);
         enemy.UpdateVelocity(towerSkill.velocityReduce, towerSkill.stunTime);
+        if (particleSystem != null && !particleSystem.isPlaying)
+        {
+            particleSystem.Stop();
+            particleSystem.Clear();
+            particleSystem.Play();
+        }
     }
     
     private void AttackBullet(Enemy enemy) {
