@@ -13,9 +13,14 @@ public class Enemy : MonoBehaviour {
     public int damageOnBase;
     [NonSerialized] public EnemyGenerator enemyGenerator;
     private NavMeshAgent navMeshAgent;
+    [SerializeField] private SpriteRenderer lifeBar;
+    private float maxLife;
+    private float maxLifeBarWidth;
     // Start is called before the first frame update
     private void Awake() {
         navMeshAgent = gameObject.GetComponent<NavMeshAgent>();
+        maxLife = life;
+        maxLifeBarWidth = lifeBar.size.x;
     }
 
     public void SetUpNavAgent() {
@@ -35,6 +40,7 @@ public class Enemy : MonoBehaviour {
     
     public void UpdateLife(float damage) {
         life -= damage;
+        lifeBar.size = new Vector2(maxLifeBarWidth * life / maxLife, lifeBar.size.y);
         if (life <= 0) {
             Die();
         }

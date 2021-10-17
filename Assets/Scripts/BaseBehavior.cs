@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseBehavior : MonoBehaviour
-{
+public class BaseBehavior : MonoBehaviour {
+    public PlayerInventory playerInventory;
     public void TakeDamage(int damage) {
-        // take damage fro
+        playerInventory.life -= damage;
     }
 }

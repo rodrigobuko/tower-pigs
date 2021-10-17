@@ -93,6 +93,7 @@ public class GridCreator : MonoBehaviour {
         } else {
           
             var randomObject = Instantiate(randomObjectsList[UnityEngine.Random.Range(0, randomObjectsList.Count)]);
+            randomObject.transform.rotation = Quaternion.Euler(0f, UnityEngine.Random.Range(0, 360) , 0f);
             var randomPos = gridCellMat[randomRow, randomColumn].gameObject.transform.position;
             var numberOfGrids = randomObject.GetComponent<PlacebaleObject>().numberOfGrids;
             if(numberOfGrids == 1){

@@ -61,12 +61,16 @@ public class GameLogic : MonoBehaviour {
                 StartEnemyWaveEvent.Invoke();
                 currentState = GameState.EnemyWave;
                 StateText.text = "Finalizar Turno";
+                AudioManager.instance.Stop("Menu");
+                AudioManager.instance.Play("Game");
                 StateButton.interactable = false;
                 break;
             case GameState.EnemyWave:
                 currentState = GameState.Stoped;
                 StateText.text = "Iniciar Preparação";
                 StateButton.interactable = true;
+                AudioManager.instance.Stop("Game");
+                AudioManager.instance.Play("Menu");
                 break;
         }
     }
@@ -93,6 +97,7 @@ public class GameLogic : MonoBehaviour {
         var turretObject = Instantiate(turret);
         turretObject.transform.position = gridCell.transform.position;
         gridCell.occupied = true;
+        AudioManager.instance.Play("Construct");
         gridCreator.DeactivateGrid();
         currentState = GameState.Preparation;
     }
