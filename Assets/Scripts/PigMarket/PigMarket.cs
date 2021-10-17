@@ -30,9 +30,9 @@ public class PigMarket : MonoBehaviour
         if (!pigWanted)
             return;
         Pig pigType = pigWanted.GetComponent<PigObject>().pigType;
-        if (_playerInventory.money < pigType.GetCurrentPrice())
+        if (_playerInventory.money < pigType.currentPrice)
             return;//avisar que o player nao tem dinheiro suficiente
-        _playerInventory.money -= pigType.GetCurrentPrice();
+        _playerInventory.money -= pigType.currentPrice;
         GameObject pigObject = Instantiate(GetPigPrefab(pigType), pigSpawnPosition, Quaternion.identity);
         playerPigs.Add(pigObject);
     }
@@ -47,7 +47,7 @@ public class PigMarket : MonoBehaviour
             Pig pigType = pig.GetComponent<PigObject>().pigType;
             if (pigType.Equals(pigObjectWanted.pigType))
             {
-                _playerInventory.money += pigType.GetCurrentPrice();
+                _playerInventory.money += pigType.currentPrice;
                 playerPigs.Remove(pig);
                 Destroy(pig);
                 return;
@@ -73,10 +73,21 @@ public class PigMarket : MonoBehaviour
             int option = UnityEngine.Random.Range(0, 2);
             if (option == 0)
             {
-                pigType.SetPreviousPrice(pigType.GetCurrentPrice() * UnityEngine.Random.Range(0.1f, 0.98f));
+                pigType.SetPreviousPrice(pigType.currentPrice * UnityEngine.Random.Range(0.1f, 0.98f));
             }
             else
-                pigType.SetPreviousPrice(pigType.GetCurrentPrice() * UnityEngine.Random.Range(1.1f, 1.98f));
+                pigType.SetPreviousPrice(pigType.currentPrice * UnityEngine.Random.Range(1.1f, 1.98f));
+        }
+    }
+
+
+    public void GetMoneyFromPigs()//rodar ao fim de cada rodada, para coletar o dinheiro das acoes
+    {
+        foreach (GameObject pig in playerPigs)
+        {
+            PigObject pigObject = pig.GetComponent<PigObject>();
+            _playerInventory.money += pigObject.ReturnMoney();
+            _playerInventory.pigMoney += pigObject.ReturnMoney();
         }
     }
 

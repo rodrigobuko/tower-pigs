@@ -29,28 +29,28 @@ public class PigPriceManager : MonoBehaviour
         return null;
     }
 
-    public void ChangePigsPrice()
+    public void ChangePigsPrice()//versao muito simplificada de um possivel jeito de alterar o preco dos porcos
     {
         foreach (Pig pigType in pigTypes)
         {
-            pigType.AddPrice(pigType.GetCurrentPrice());
+            pigType.AddPrice(pigType.currentPrice);
             int option = UnityEngine.Random.Range(0, 2);
             if (option == 0)//preco diminui
             {
-                pigType.SetPreviousPrice(pigType.GetCurrentPrice());
-                pigType.SetCurrentPrice(pigType.GetCurrentPrice()*UnityEngine.Random.Range(0.1f, 0.9f));
+                pigType.SetPreviousPrice(pigType.currentPrice);
+                pigType.SetCurrentPrice(pigType.currentPrice*UnityEngine.Random.Range(0.1f, 0.9f));
             }
             else//preco aumenta
             {
-                pigType.SetPreviousPrice(pigType.GetCurrentPrice());
-                pigType.SetCurrentPrice(pigType.GetCurrentPrice() * UnityEngine.Random.Range(1.1f, 1.9f));
+                pigType.SetPreviousPrice(pigType.currentPrice);
+                pigType.SetCurrentPrice(pigType.currentPrice * UnityEngine.Random.Range(1.1f, 1.9f));
             }
         }
     }
 
     public int CheckPriceChange( Pig pigType)
     {
-        if (pigType.GetCurrentPrice() - pigType.GetPreviousPrice() > 0)
+        if (pigType.currentPrice - pigType.previousPrice > 0)
             return 1;
         else
             return -1;
@@ -59,12 +59,12 @@ public class PigPriceManager : MonoBehaviour
     public float ReturnChangePercent(int round, Pig pigType)
     {
         float oldPrice;
-        if (round == 0 && pigType.GetPreviousPrice()==0)
+        if (round == 0 && pigType.previousPrice==0)
         {
             return CheckPriceChange(pigType) * UnityEngine.Random.Range(0f, 100f);
         }
-        oldPrice = pigType.GetPreviousPrice();
-        return (pigType.GetCurrentPrice() - oldPrice) / 100;
+        oldPrice = pigType.previousPrice;
+        return (pigType.currentPrice - oldPrice) / 100;
     }
 
 
