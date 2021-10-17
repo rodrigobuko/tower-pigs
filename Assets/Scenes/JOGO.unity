@@ -12187,6 +12187,14 @@ PrefabInstance:
       value: Flecha
       objectReference: {fileID: 0}
     - target: {fileID: 8860123565983059487, guid: 652593daeb12e43c49d86f54110ddb3b, type: 3}
+      propertyPath: sounds.Array.data[8].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 39f554c8a40374bde8b927c1d92093f0, type: 3}
+    - target: {fileID: 8860123565983059487, guid: 652593daeb12e43c49d86f54110ddb3b, type: 3}
+      propertyPath: sounds.Array.data[8].name
+      value: Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 8860123565983059487, guid: 652593daeb12e43c49d86f54110ddb3b, type: 3}
       propertyPath: sounds.Array.data[4].pitch
       value: 0.79
       objectReference: {fileID: 0}
@@ -12205,6 +12213,10 @@ PrefabInstance:
     - target: {fileID: 8860123565983059487, guid: 652593daeb12e43c49d86f54110ddb3b, type: 3}
       propertyPath: sounds.Array.data[7].volume
       value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8860123565983059487, guid: 652593daeb12e43c49d86f54110ddb3b, type: 3}
+      propertyPath: sounds.Array.data[8].volume
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 652593daeb12e43c49d86f54110ddb3b, type: 3}
@@ -24796,7 +24808,7 @@ GameObject:
   - component: {fileID: 840525964}
   m_Layer: 5
   m_Name: TextMoney
-  m_TagString: Untagged
+  m_TagString: TextMoney
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28027,6 +28039,7 @@ GameObject:
   - component: {fileID: 953338971}
   - component: {fileID: 953338970}
   - component: {fileID: 953338969}
+  - component: {fileID: 953338972}
   m_Layer: 5
   m_Name: TowerMarketButton
   m_TagString: Untagged
@@ -28111,6 +28124,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 953338972}
+        m_TargetAssemblyTypeName: ButtonSound, Assembly-CSharp
+        m_MethodName: PlayButtonSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &953338970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28149,6 +28174,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 953338967}
   m_CullTransparentMesh: 1
+--- !u!114 &953338972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 953338967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22a93234cb89f4a8590516dd02c468cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clipName: Button
 --- !u!1001 &953348767
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40877,6 +40915,7 @@ GameObject:
   - component: {fileID: 1398190596}
   - component: {fileID: 1398190595}
   - component: {fileID: 1398190597}
+  - component: {fileID: 1398190598}
   m_Layer: 5
   m_Name: BuyButton
   m_TagString: Untagged
@@ -41034,6 +41073,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1398190598}
+        m_TargetAssemblyTypeName: ButtonSound, Assembly-CSharp
+        m_MethodName: PlayButtonSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1398190598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398190593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22a93234cb89f4a8590516dd02c468cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clipName: Buy
 --- !u!1 &1405727669
 GameObject:
   m_ObjectHideFlags: 0
@@ -41125,6 +41189,7 @@ GameObject:
   - component: {fileID: 1406524790}
   - component: {fileID: 1406524789}
   - component: {fileID: 1406524788}
+  - component: {fileID: 1406524791}
   m_Layer: 5
   m_Name: PigMarketButton
   m_TagString: Untagged
@@ -41209,6 +41274,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1406524791}
+        m_TargetAssemblyTypeName: ButtonSound, Assembly-CSharp
+        m_MethodName: PlayButtonSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1406524789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41247,6 +41324,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1406524786}
   m_CullTransparentMesh: 1
+--- !u!114 &1406524791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1406524786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22a93234cb89f4a8590516dd02c468cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clipName: Button
 --- !u!1001 &1407555326
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57078,7 +57168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6d1777e590af47f395e2afcacffa4fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  city: {fileID: 2130445796}
+  city: {fileID: 3557978308379072925}
   EnemySmallPrefab: {fileID: 1354206362006020087, guid: 344cf56bbd5d44379a7912b16993b578, type: 3}
   EnemyBigPrefab: {fileID: 1917694436909681485, guid: 8da488e2dc2ff4378b9ef151135ed496, type: 3}
   WarpPoint: {fileID: 1301608742867994679, guid: 132c62e4a993f3a43a0cf40d3d4244ca, type: 3}
@@ -62822,18 +62912,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75be00e787ca5442d84b5f86fb6d06a5, type: 3}
---- !u!1 &2130445796 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3557978309285829758, guid: 75be00e787ca5442d84b5f86fb6d06a5, type: 3}
-  m_PrefabInstance: {fileID: 2130445795}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2130445797
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2130445796}
+  m_GameObject: {fileID: 3557978308379072925}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 28bb0dbcc350e40a7ada327c6eea37a1, type: 3}
@@ -62841,7 +62926,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInventory: {fileID: 621817420}
   life: 20
-  LifeText: {fileID: 840525962}
+  LifeText: {fileID: 0}
+  GameOverEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 855669349}
+        m_TargetAssemblyTypeName: GameLogic, Assembly-CSharp
+        m_MethodName: GameOver
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &2136585915
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -63465,4 +63565,9 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e475a52a3bb2c714585dce5eb1fe83fd, type: 3}
   m_PrefabInstance: {fileID: 2144839726}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3557978308379072925 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3557978309285829758, guid: 75be00e787ca5442d84b5f86fb6d06a5, type: 3}
+  m_PrefabInstance: {fileID: 2130445795}
   m_PrefabAsset: {fileID: 0}

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public enum GameState {
@@ -108,6 +109,10 @@ public class GameLogic : MonoBehaviour {
         AudioManager.instance.Play("Construct");
         gridCreator.DeactivateGrid();
         currentState = GameState.Preparation;
+    }
+
+    public void GameOver() {
+        SceneManager.LoadScene("MENU");
     }
 
     public void ChooseTower(int towerType)
