@@ -136,6 +136,7 @@ MonoBehaviour:
   life: 2
   velocity: 1
   damageOnBase: 0
+  lifeBar: {fileID: 7892058125512120351}
 --- !u!1 &2909116265031111480
 GameObject:
   m_ObjectHideFlags: 0

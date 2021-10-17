@@ -114,6 +114,7 @@ MonoBehaviour:
   life: 5
   velocity: 0.6
   damageOnBase: 0
+  lifeBar: {fileID: 3754241173740234010}
 --- !u!195 &1026255121016780276
 NavMeshAgent:
   m_ObjectHideFlags: 0

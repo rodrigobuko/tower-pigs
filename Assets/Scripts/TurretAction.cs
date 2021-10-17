@@ -77,6 +77,9 @@ public class TurretAction : MonoBehaviour
         if (towerRotation != null) {
             towerRotation.transform.LookAt(enemy.transform, Vector3.up);
             towerRotation.transform.rotation = Quaternion.Euler(0f, towerRotation.transform.rotation.eulerAngles.y, 0f);
+            AudioManager.instance.Play("Laser");
+        } else {
+            AudioManager.instance.Play("Flecha");
         }
         var bulletObject = Instantiate(towerSkill.bullet);
         if (bulletPoint != null) {
@@ -95,6 +98,7 @@ public class TurretAction : MonoBehaviour
         if (towerSkill.singleTarget) {
             AttackBullet(enemies.First());
         } else {
+            AudioManager.instance.Play("Stun");
             foreach (var enemy in enemies) {
                 Attack(enemy);
             }
@@ -112,6 +116,7 @@ public class TurretAction : MonoBehaviour
         foreach (var bullet in currentBullets) {
             Destroy(bullet);
         }
+        AudioManager.instance.Stop("Laser");
         currentBullets.Clear();
     }
 }

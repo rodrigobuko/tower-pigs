@@ -19,7 +19,7 @@ public class Pig : ScriptableObject
     public float previousPrice;
     public PigInvestimentType investimentType;
     private List<float> _pricesPerRound;
-
+    
     public float GetPrice(int round)
     {
         return _pricesPerRound[round];
@@ -27,6 +27,9 @@ public class Pig : ScriptableObject
 
     public void SetCurrentPrice(float currentPrice)
     {
+        if (_pricesPerRound == null) {
+            _pricesPerRound = new List<float>();
+        }
         this.currentPrice = currentPrice;
         _pricesPerRound.Add(currentPrice);
     }
