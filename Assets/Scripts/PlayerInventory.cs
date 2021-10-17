@@ -10,6 +10,7 @@ public class PlayerInventory : MonoBehaviour
     public int life;
     [HideInInspector]public float price;
     public Text moneyText;
+    public Text moneyText2;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +22,7 @@ public class PlayerInventory : MonoBehaviour
     void Update()
     {
         moneyText.text = money.ToString();
+        moneyText2.text = money.ToString();
     }
 
     public void BuySomething()
