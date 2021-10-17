@@ -66,11 +66,14 @@ public class GridCreator : MonoBehaviour {
 
     private void FillTheGrid() {
         // place base 
-        gridCellMat[row/2, column/2].occupied = true;
-        gridCellMat[row/2, column/2 + 1].occupied = true;
-        gridCellMat[row/2 + 1, column/2].occupied = true;
-        gridCellMat[row/2 + 1, column/2 + 1].occupied = true;
-        
+        for (int i = -1; i < 4; i++) {
+            gridCellMat[row/2 - 1 , column/2 + i].occupied = true;
+            gridCellMat[row/2, column/2 + i].occupied = true;
+            gridCellMat[row/2 + 1, column/2 +i].occupied = true;
+            gridCellMat[row/2 + 2, column/2 + i].occupied = true;
+            gridCellMat[row/2 + 3, column/2 + i].occupied = true;
+        }
+
         // place random objects 
         int random = UnityEngine.Random.Range(randomObjects.min, randomObjects.max);
         for (int i = 0; i < random; i++) {
@@ -82,23 +85,27 @@ public class GridCreator : MonoBehaviour {
         if (attempt > 5) {
             return;
         }
-        int randomRow = UnityEngine.Random.Range(0, row - 1);
-        int randomColumn = UnityEngine.Random.Range(0, column - 1);
+        int randomRow = UnityEngine.Random.Range(1, row - 1);
+        int randomColumn = UnityEngine.Random.Range(1, column - 1);
 
         if (gridCellMat[randomRow, randomColumn].occupied) {
           FindRandomPositions(attempt + 1);
         } else {
           
             var randomObject = Instantiate(randomObjectsList[UnityEngine.Random.Range(0, randomObjectsList.Count)]);
-            randomObject.transform.position = gridCellMat[randomRow, randomColumn].gameObject.transform.position;
+            var randomPos = gridCellMat[randomRow, randomColumn].gameObject.transform.position;
             var numberOfGrids = randomObject.GetComponent<PlacebaleObject>().numberOfGrids;
             if(numberOfGrids == 1){
                 gridCellMat[randomRow, randomColumn].occupied = true;
+                randomObject.transform.position = randomPos;
             } else {
                 gridCellMat[randomRow, randomColumn].occupied = true;
                 gridCellMat[randomRow, randomColumn + 1].occupied = true;
                 gridCellMat[randomRow + 1, randomColumn].occupied = true;
                 gridCellMat[randomRow + 1, randomColumn + 1].occupied = true;
+                randomPos.x += padding / 2;
+                randomPos.z -= padding / 2;
+                randomObject.transform.position = randomPos;
             }
         }
         
