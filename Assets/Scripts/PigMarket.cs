@@ -42,7 +42,9 @@ public class PigMarket : MonoBehaviour
             if (pig.pigType.Equals(pigType))
             {
                 _playerInventory.money += pig.pigType.GetCurrentPrice();
-                Destroy(pig);
+                playerPigs.Remove(pig);
+                Destroy(pig.gameObject);
+                return;
             }
         }
     }
