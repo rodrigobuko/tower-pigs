@@ -15,7 +15,7 @@ MonoBehaviour:
   cooldown: 5
   damage: 1
   range: 2
-  velocityReduce: 2
+  velocityReduce: 1
   stunTime: 0
   delay: 0
   singleTarget: 1
