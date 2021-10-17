@@ -10,10 +10,12 @@ public class TowerMarketUI : MonoBehaviour
     public Button buyButton;
     public GameObject OpenMarketButton;
     public GameObject MarketUI;
+    public GameLogic gameLogic;
+    private PlayerInventory _playerInventory;
     public int round;
     void Start()
     {
-
+        _playerInventory = GetComponent<PlayerInventory>();
     }
 
     // Update is called once per frame
@@ -25,11 +27,19 @@ public class TowerMarketUI : MonoBehaviour
     public void OpenTowerPopUp(TowerSkill towerSkill)
     {
         TowerPopUp.SetActive(true);
-        buyButton.onClick.AddListener(delegate { /*passar função de posicionar a torre);*/ });
-        //TowerPopUp.transform.GetChild(5).GetComponent<Text>().text = nome;
-            //PigPopUp.transform.GetChild(6).GetComponent<Image>().sprite = pigType.sprite;//imagem do porco
-            //TowerPopUp.transform.GetChild(7).GetComponent<Text>().text = preco().ToString() + " moedas";//preco atual  
-            //TowerPopUp.transform.GetChild(7).GetComponent<Text>().text = descricao;//descricao
+        //TowerPopUp.transform.GetChild(4).GetComponent<Text>().text = nome;
+        //PigPopUp.transform.GetChild(5).GetComponent<Image>().sprite = pigType.sprite;//imagem do porco
+        TowerPopUp.transform.GetChild(6).GetComponent<Text>().text = towerSkill.price.ToString() + " moedas";//preco atual  
+        if (towerSkill.price > _playerInventory.money)
+            buyButton.enabled = false;
+        else
+        {
+            buyButton.enabled = true;
+            _playerInventory.price = towerSkill.price;
+        }
+            
+
+        //TowerPopUp.transform.GetChild(7).GetComponent<Text>().text = descricao;//descricao
     }
 
     public void OpenMarket()
@@ -41,5 +51,10 @@ public class TowerMarketUI : MonoBehaviour
     {
         TowerPopUp.SetActive(false);
         buyButton.onClick.RemoveAllListeners();
+    }
+
+    public void CloseMarket()
+    {
+        MarketUI.SetActive(false);
     }
 }

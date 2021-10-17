@@ -12,4 +12,5 @@ public class TowerSkill : ScriptableObject {
     public float delay;
     public bool singleTarget;
     public GameObject bullet;
+    public float price;
 }

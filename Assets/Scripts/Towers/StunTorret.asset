@@ -20,3 +20,4 @@ MonoBehaviour:
   delay: 0.5
   singleTarget: 0
   bullet: {fileID: 0}
+  price: 100
