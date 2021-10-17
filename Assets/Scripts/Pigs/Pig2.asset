@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1565fa6316f1d154987ef64c80201274, type: 3}
   m_Name: Pig2
   m_EditorClassIdentifier: 
-  pigName: Pig2
+  pigName: White
   description: "Voc\xEA pode ganhar muito com esse porco...ou n\xE3o..."
   initialPrice: 50
+  sprite: {fileID: 0}
+  currentPrice: 50
+  previousPrice: 37.036385
+  investimentType: 0

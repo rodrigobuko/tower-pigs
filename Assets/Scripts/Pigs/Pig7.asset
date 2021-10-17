@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1565fa6316f1d154987ef64c80201274, type: 3}
   m_Name: Pig7
   m_EditorClassIdentifier: 
-  pigName: Pig7
+  pigName: Black
   description: 
   initialPrice: 60
   sprite: {fileID: 0}
-  currentPrice: 20
-  previousPrice: 100
+  currentPrice: 60
+  previousPrice: 82.3115
   investimentType: 0
