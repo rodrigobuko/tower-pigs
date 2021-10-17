@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class BaseBehavior : MonoBehaviour {
     public PlayerInventory playerInventory;
     public int life;
-    [SerializeField] public GameObject LifeText;
+    [NonSerialized] public GameObject LifeText;
     public UnityEvent GameOverEvent;
 
     private void Start() {
