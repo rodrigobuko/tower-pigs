@@ -112,7 +112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 5
   velocity: 0.6
-  damageOnBase: 0
+  damageOnBase: 5
   lifeBar: {fileID: 1976946867188113889}
 --- !u!195 &1026255121016780276
 NavMeshAgent:
@@ -146,6 +146,18 @@ PrefabInstance:
     - target: {fileID: 904040116109623233, guid: 966d0d7c16fb6094c9de6cb4d7c35cdc, type: 3}
       propertyPath: m_Name
       value: Lobo Maior
+      objectReference: {fileID: 0}
+    - target: {fileID: 4018581949787991338, guid: 966d0d7c16fb6094c9de6cb4d7c35cdc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4018581949787991338, guid: 966d0d7c16fb6094c9de6cb4d7c35cdc, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4018581949787991338, guid: 966d0d7c16fb6094c9de6cb4d7c35cdc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6691128365027111699, guid: 966d0d7c16fb6094c9de6cb4d7c35cdc, type: 3}
       propertyPath: m_RootOrder

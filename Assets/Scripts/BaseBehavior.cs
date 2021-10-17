@@ -19,8 +19,9 @@ public class BaseBehavior : MonoBehaviour {
 
     public void TakeDamage(int damage) {
         Debug.Log("OBA");
-        life -= damage;
+        life = life - damage;
         LifeText.GetComponent<Text>().text = life.ToString();
+        Debug.Log($"VIDAA {life}");
         if (life <= 0) {
             GameOverEvent.Invoke();
         }

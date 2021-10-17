@@ -134,7 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 2
   velocity: 1
-  damageOnBase: 0
+  damageOnBase: 2
   lifeBar: {fileID: 5212377825860856031}
 --- !u!1001 &9029883557113771998
 PrefabInstance:
@@ -146,6 +146,18 @@ PrefabInstance:
     - target: {fileID: 904040116109623233, guid: 31266621ed7d15a4aacf5ba4b9edae68, type: 3}
       propertyPath: m_Name
       value: Lobo
+      objectReference: {fileID: 0}
+    - target: {fileID: 4018581949787991338, guid: 31266621ed7d15a4aacf5ba4b9edae68, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4018581949787991338, guid: 31266621ed7d15a4aacf5ba4b9edae68, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4018581949787991338, guid: 31266621ed7d15a4aacf5ba4b9edae68, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6691128365027111699, guid: 31266621ed7d15a4aacf5ba4b9edae68, type: 3}
       propertyPath: m_RootOrder
