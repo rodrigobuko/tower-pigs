@@ -16,5 +16,6 @@ MonoBehaviour:
   description: 
   initialPrice: 400
   sprite: {fileID: 0}
-  _currentPrice: 400
-  _previousPrice: 206.64485
+  currentPrice: 400
+  previousPrice: 701.06146
+  investimentType: 1

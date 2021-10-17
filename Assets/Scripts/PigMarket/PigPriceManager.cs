@@ -6,12 +6,6 @@ using UnityEngine;
 public class PigPriceManager : MonoBehaviour
 {
     public List<Pig> pigTypes;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -29,28 +23,50 @@ public class PigPriceManager : MonoBehaviour
         return null;
     }
 
-    public void ChangePigsPrice()
+    public void ChangePigsPrice()//versao muito simplificada de um possivel jeito de alterar o preco dos porcos; Rodar a cada fim de rodada
     {
         foreach (Pig pigType in pigTypes)
         {
-            pigType.AddPrice(pigType.GetCurrentPrice());
+            pigType.AddPrice(pigType.currentPrice);
             int option = UnityEngine.Random.Range(0, 2);
             if (option == 0)//preco diminui
             {
-                pigType.SetPreviousPrice(pigType.GetCurrentPrice());
-                pigType.SetCurrentPrice(pigType.GetCurrentPrice()*UnityEngine.Random.Range(0.1f, 0.9f));
+                pigType.SetPreviousPrice(pigType.currentPrice);
+                switch (pigType.investimentType)
+                {
+                    case PigInvestimentType.HighRisk://acoes mais arriscadas podem ter queda de preco maior
+                        pigType.SetCurrentPrice(pigType.currentPrice * UnityEngine.Random.Range(0.1f, 0.9f));
+                        break;
+                    case PigInvestimentType.MediumRisk:
+                        pigType.SetCurrentPrice(pigType.currentPrice * UnityEngine.Random.Range(0.5f, 0.9f));
+                        break;
+                    default://smallRisk
+                        pigType.SetCurrentPrice(pigType.currentPrice * UnityEngine.Random.Range(0.7f, 0.9f));
+                        break;
+                }
             }
             else//preco aumenta
             {
-                pigType.SetPreviousPrice(pigType.GetCurrentPrice());
-                pigType.SetCurrentPrice(pigType.GetCurrentPrice() * UnityEngine.Random.Range(1.1f, 1.9f));
+                pigType.SetPreviousPrice(pigType.currentPrice);
+                switch (pigType.investimentType)//acoes mais arriscadas podem ter aumentos de preço maior
+                {
+                    case PigInvestimentType.HighRisk:
+                        pigType.SetCurrentPrice(pigType.currentPrice * UnityEngine.Random.Range(1.1f, 1.9f));
+                        break;
+                    case PigInvestimentType.MediumRisk:
+                        pigType.SetCurrentPrice(pigType.currentPrice * UnityEngine.Random.Range(1.1f, 1.5f));
+                        break;
+                    default://smallRisk
+                        pigType.SetCurrentPrice(pigType.currentPrice * UnityEngine.Random.Range(1.1f, 1.3f));
+                        break;
+                }
             }
         }
     }
 
     public int CheckPriceChange( Pig pigType)
     {
-        if (pigType.GetCurrentPrice() - pigType.GetPreviousPrice() > 0)
+        if (pigType.currentPrice - pigType.previousPrice > 0)
             return 1;
         else
             return -1;
@@ -59,12 +75,12 @@ public class PigPriceManager : MonoBehaviour
     public float ReturnChangePercent(int round, Pig pigType)
     {
         float oldPrice;
-        if (round == 0 && pigType.GetPreviousPrice()==0)
+        if (round == 0 && pigType.previousPrice==0)
         {
             return CheckPriceChange(pigType) * UnityEngine.Random.Range(0f, 100f);
         }
-        oldPrice = pigType.GetPreviousPrice();
-        return (pigType.GetCurrentPrice() - oldPrice) / 100;
+        oldPrice = pigType.previousPrice;
+        return (pigType.currentPrice - oldPrice) / 100;
     }
 
 

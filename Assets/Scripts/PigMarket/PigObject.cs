@@ -5,15 +5,17 @@ using UnityEngine;
 public class PigObject : MonoBehaviour
 {
     public Pig pigType;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    public float ReturnMoney()//valores aleatorios, precisa de balanceamento
     {
-        
+        switch (pigType.investimentType)
+        {
+            case PigInvestimentType.HighRisk:
+                return pigType.currentPrice*0.5f;
+            case PigInvestimentType.MediumRisk:
+                return pigType.currentPrice * 0.5f;
+            default://smallRisk
+                return pigType.currentPrice * 0.5f;
+        }
     }
 }

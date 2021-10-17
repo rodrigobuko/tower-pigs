@@ -15,3 +15,7 @@ MonoBehaviour:
   pigName: Pig1
   description: O valor desse porco oscila pouco
   initialPrice: 5
+  sprite: {fileID: 0}
+  currentPrice: 5
+  previousPrice: 4.306756
+  investimentType: 2
