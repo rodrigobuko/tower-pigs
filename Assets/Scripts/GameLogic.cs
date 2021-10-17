@@ -30,6 +30,10 @@ public class GameLogic : MonoBehaviour {
     [SerializeField] private UnityEvent StartEnemyWaveEvent;
     [SerializeField] private Text StateText;
     [SerializeField] private Button StateButton;
+
+    // pigs
+    [SerializeField] private PigPriceManager pigPriceManager;
+    [SerializeField] private PigMarket pigMarket;
     private GameState currentState;
 
     private void Start() {
@@ -60,7 +64,7 @@ public class GameLogic : MonoBehaviour {
             case GameState.Preparation:
                 StartEnemyWaveEvent.Invoke();
                 currentState = GameState.EnemyWave;
-                StateText.text = "Finalizar Turno";
+                StateText.text = "Batalha";
                 AudioManager.instance.Stop("Menu");
                 AudioManager.instance.Play("Game");
                 StateButton.interactable = false;
@@ -71,6 +75,10 @@ public class GameLogic : MonoBehaviour {
                 StateButton.interactable = true;
                 AudioManager.instance.Stop("Game");
                 AudioManager.instance.Play("Menu");
+                
+                pigPriceManager.ChangePigsPrice();
+                pigMarket.GetMoneyFromPigs();
+                AudioManager.instance.Play("Coin");
                 break;
         }
     }
