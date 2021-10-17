@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27f5802a6a2a24013b62680fbe4ebf3d, type: 3}
   m_Name: NormalTower
   m_EditorClassIdentifier: 
-  cooldown: 5
+  cooldown: 2
   damage: 1
-  range: 2
+  range: 6
   velocityReduce: 1
   stunTime: 0
   delay: 0

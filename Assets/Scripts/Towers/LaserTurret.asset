@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldown: 0
   damage: 1
-  range: 2
+  range: 5
   velocityReduce: 0.8
   stunTime: 0
   delay: 0
