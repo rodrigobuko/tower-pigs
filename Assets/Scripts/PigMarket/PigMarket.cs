@@ -36,8 +36,8 @@ public class PigMarket : MonoBehaviour
             return;//avisar que o player nao tem dinheiro suficiente
         _playerInventory.money -= pigType.currentPrice;
         float angle = Mathf.Deg2Rad * UnityEngine.Random.Range(0, 360);
-        pigSpawnPosition.x += (float)(0.5f * Mathf.Cos(angle));
-        pigSpawnPosition.z += (float)(0.5f * Mathf.Sin(angle));
+        pigSpawnPosition.x = (float)(0.5f * Mathf.Cos(angle));
+        pigSpawnPosition.z = (float)(0.5f * Mathf.Sin(angle));
         GameObject pigObject = Instantiate(GetPigPrefab(pigType), pigSpawnPosition, Quaternion.identity);
         playerPigs.Add(pigObject);
     }

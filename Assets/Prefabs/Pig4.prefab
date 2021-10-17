@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8352393454735482233}
   - component: {fileID: 8352393454735482232}
   - component: {fileID: 8352393454735482235}
+  - component: {fileID: 3879756067494835645}
   m_Layer: 0
   m_Name: Pig4
   m_TagString: Untagged
@@ -111,6 +112,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pigType: {fileID: 11400000, guid: d7686dba9ddc7ad41b5ab9121155094d, type: 2}
+--- !u!114 &3879756067494835645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8352393454735482234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20f0e922a40534156908389787e84cd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 5672562000178324860}
 --- !u!1001 &8580123392529281355
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -171,5 +185,10 @@ PrefabInstance:
 --- !u!4 &8283524401598266753 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 425103399922519242, guid: 98652d1eb63cd2f428dfb012bf05f0fc, type: 3}
+  m_PrefabInstance: {fileID: 8580123392529281355}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &5672562000178324860 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4155210373235479607, guid: 98652d1eb63cd2f428dfb012bf05f0fc, type: 3}
   m_PrefabInstance: {fileID: 8580123392529281355}
   m_PrefabAsset: {fileID: 0}
