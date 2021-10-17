@@ -23,9 +23,13 @@ public class Enemy : MonoBehaviour {
         navMeshAgent.speed = velocity;
     }
 
-    public void UpdateVelocity(float newVelocity) {
+    public void UpdateVelocity(float newVelocity, float stunTime) {
+        float oldVelocity = velocity;
         velocity = newVelocity;
         navMeshAgent.speed = velocity;
+        if (stunTime > 0) {
+            StartCoroutine(ReturnVelocity(oldVelocity, stunTime));
+        }
     }
     
     public void UpdateLife(float damage) {
@@ -38,5 +42,11 @@ public class Enemy : MonoBehaviour {
     private void Die() {
         Debug.Log("e morreu...");
         Destroy(gameObject);
+    }
+
+    private IEnumerator ReturnVelocity(float oldVelocity, float stunTime) {
+        yield return new WaitForSecondsRealtime(stunTime);
+        UpdateVelocity(oldVelocity, 0);
+
     }
 }

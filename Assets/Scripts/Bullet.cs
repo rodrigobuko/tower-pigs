@@ -11,7 +11,7 @@ public class Bullet : MonoBehaviour {
         if (other.CompareTag("Enemy")) {
             var enemy = other.gameObject.GetComponent<Enemy>();
             enemy.UpdateLife(myTower.damage);
-            enemy.UpdateVelocity(myTower.velocityReduce);
+            enemy.UpdateVelocity(myTower.velocityReduce, myTower.stunTime);
             Destroy(gameObject);
         }
     }

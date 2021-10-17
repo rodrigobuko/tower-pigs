@@ -626,7 +626,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridCreator: {fileID: 1863017486}
-  turret: {fileID: 8906317362287657985, guid: fc8b7b23272624d4caa3300b8b3d7d0e, type: 3}
+  turret: {fileID: 8906317362287657985, guid: 30b8ff3b54b14714dabd92b7734de18e, type: 3}
 --- !u!4 &855669350
 Transform:
   m_ObjectHideFlags: 0
