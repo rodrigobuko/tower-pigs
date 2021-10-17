@@ -5,7 +5,8 @@ using UnityEngine;
 
 public enum GameState {
     Stoped,
-    PlacingTower
+    PlacingTower,
+    EnemyWave
 }
 public class GameLogic : MonoBehaviour {
     
@@ -18,7 +19,12 @@ public class GameLogic : MonoBehaviour {
             currentState = GameState.PlacingTower;
         }
     }
-    
+
+    public void StartWave() {
+        if (currentState == GameState.Stoped) {
+            currentState = GameState.EnemyWave;
+        }
+    }
     
     void Update()
     {

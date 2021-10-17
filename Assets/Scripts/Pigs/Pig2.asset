@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1565fa6316f1d154987ef64c80201274, type: 3}
-  m_Name: New Pig
+  m_Name: Pig2
   m_EditorClassIdentifier: 
-  pigName: Crazy Pig
+  pigName: Pig2
   description: "Voc\xEA pode ganhar muito com esse porco...ou n\xE3o..."
   initialPrice: 50

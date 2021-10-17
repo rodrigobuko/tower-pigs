@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PigPriceManager : MonoBehaviour
 {
-    [HideInInspector] public int round;
     public List<Pig> pigTypes;
     // Start is called before the first frame update
     void Start()
@@ -18,24 +18,6 @@ public class PigPriceManager : MonoBehaviour
         //mudar o preco dos porcos a cada rodada
     }
 
-    private int CalculatePigPriceChange(string pigTypeName)//retorna -1 se diminuiu; 0 se igual;//1 se aumentou
-    {
-        if (round == 0)
-            return 0;
-        Pig pig = getPigOfType(pigTypeName);
-
-        if (pig)//nao ha porcos desse tipo
-            return 0;
-
-        float priceChange = pig.GetCurrentPrice() - pig.GetPigPrice(round);
-        if (priceChange > 0)
-            return 1;
-        else if (priceChange < 0)
-            return -1;
-        else
-            return 0;
-    }
-
     private Pig getPigOfType(string pigTypeName)
     {
         foreach (Pig pigType in pigTypes)
@@ -46,5 +28,26 @@ public class PigPriceManager : MonoBehaviour
 
         return null;
     }
+
+    public void ChangePigsPrice()
+    {
+        foreach (Pig pigType in pigTypes)
+        {
+            pigType.AddPrice(pigType.GetCurrentPrice());
+            int option = UnityEngine.Random.Range(0, 2);
+            if (option == 0)//preco diminui
+            {
+                pigType.SetCurrentPrice(pigType.GetCurrentPrice()*UnityEngine.Random.Range(0.3f, 0.9f));
+                pigType.AddPriceChange(-1);
+            }
+            else//preco aumenta
+            {
+                pigType.SetCurrentPrice(pigType.GetCurrentPrice() * UnityEngine.Random.Range(1.1f, 1.9f));
+                pigType.AddPriceChange(1);
+            }
+        }
+    }
+
+
 
 }
