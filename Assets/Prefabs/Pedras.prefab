@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1804117169481767351}
   - component: {fileID: 4001400919593045803}
   - component: {fileID: 3751599565336545058}
+  - component: {fileID: 7019343549151676544}
   m_Layer: 0
   m_Name: Pedras
   m_TagString: Untagged
@@ -62,6 +63,19 @@ MonoBehaviour:
   m_Area: 1
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
+--- !u!65 &7019343549151676544
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804117169481767348}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1804117169647311958
 PrefabInstance:
   m_ObjectHideFlags: 0
