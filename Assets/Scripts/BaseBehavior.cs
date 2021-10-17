@@ -14,7 +14,10 @@ public class BaseBehavior : MonoBehaviour {
 
     private void Start() {
         LifeText = GameObject.FindWithTag("TextMoney");
-        LifeText.GetComponent<Text>().text = life.ToString();
+        if (LifeText != null) {
+            LifeText.GetComponent<Text>().text = life.ToString();
+        }
+       
     }
 
     public void TakeDamage(int damage) {
