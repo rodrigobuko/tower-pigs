@@ -8,10 +8,21 @@ public enum GameState {
     PlacingTower,
     EnemyWave
 }
+[System.Serializable]
+public enum TowerTypes
+{
+    Stun,
+    Shoot,
+    Laser
+}
 public class GameLogic : MonoBehaviour {
     
     [SerializeField] private GridCreator gridCreator;
     [SerializeField] private GameObject turret;
+    [SerializeField] private GameObject stunPrefab;
+    [SerializeField] private GameObject shootPrefab;
+    [SerializeField] private GameObject laserPrefab;
+
     private GameState currentState;
     public void  ActivateTowerInterface() {
         if (currentState == GameState.Stoped) {
@@ -50,5 +61,21 @@ public class GameLogic : MonoBehaviour {
         gridCell.occupied = true;
         gridCreator.DeactivateGrid();
         currentState = GameState.Stoped;
+    }
+
+    public void ChooseTower(int towerType)
+    {
+        switch (towerType)
+        {
+            case 0:
+                turret = laserPrefab;
+                break;
+            case 1:
+                turret = shootPrefab;
+                break;
+            default:
+                turret = stunPrefab;
+                break;
+        }
     }
 }

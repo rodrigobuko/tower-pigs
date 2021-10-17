@@ -20,3 +20,4 @@ MonoBehaviour:
   delay: 0
   singleTarget: 1
   bullet: {fileID: 1384158165304096468, guid: d907bdded28e14a5bb70e4df8718d3f5, type: 3}
+  price: 600
