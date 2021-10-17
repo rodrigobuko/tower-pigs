@@ -455,10 +455,10 @@ RectTransform:
   m_Father: {fileID: 1488014548}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 4, y: -4.6899}
-  m_SizeDelta: {x: 316.2439, y: 320.7399}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -172, y: -4.689911}
+  m_SizeDelta: {x: 316.2439, y: -11.260101}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &172259815
 MonoBehaviour:
@@ -1096,7 +1096,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 466772132}
-  - component: {fileID: 466772133}
   m_Layer: 5
   m_Name: PigMarketUI
   m_TagString: Untagged
@@ -1119,30 +1118,11 @@ RectTransform:
   m_Father: {fileID: 374737224}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &466772133
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 466772131}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3119399bb16c10447ae2d6b0e1cfed64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PigPopUp: {fileID: 0}
-  sellButton: {fileID: 0}
-  buyButton: {fileID: 0}
-  OpenMarketButton: {fileID: 0}
-  PriceRiseSprite: {fileID: 0}
-  PriceDecreaseSprite: {fileID: 0}
-  MarketUI: {fileID: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -254, y: -0.5}
+  m_SizeDelta: {x: 100, y: -243}
+  m_Pivot: {x: 1, y: 0.5}
 --- !u!1 &494313173
 GameObject:
   m_ObjectHideFlags: 0
@@ -1253,6 +1233,10 @@ MonoBehaviour:
   pigTypes:
   - {fileID: 11400000, guid: b17a88f3955381d49b882d5abab40c1d, type: 2}
   - {fileID: 11400000, guid: 773a02218f8c4e541a3ad5efb0312768, type: 2}
+  - {fileID: 11400000, guid: f752f7c320f88ba46b23a92770e283e0, type: 2}
+  - {fileID: 11400000, guid: d7686dba9ddc7ad41b5ab9121155094d, type: 2}
+  - {fileID: 11400000, guid: a110b99241d5f1c45b946a038219f9b8, type: 2}
+  - {fileID: 11400000, guid: 57051f16ba8f6774cb31bdee476d27d1, type: 2}
   playerPigs: []
   pigPrefabs:
   - {fileID: 7983171683080046026, guid: 7dfbee34ce78d684ebaadd1ee171be59, type: 3}
@@ -1320,9 +1304,10 @@ MonoBehaviour:
   sellButton: {fileID: 1559254814}
   buyButton: {fileID: 922770374}
   OpenMarketButton: {fileID: 1883928442}
-  PriceRiseSprite: {fileID: 0}
-  PriceDecreaseSprite: {fileID: 0}
+  PriceRiseSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  PriceDecreaseSprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
   MarketUI: {fileID: 466772131}
+  round: 0
 --- !u!1 &582788703
 GameObject:
   m_ObjectHideFlags: 0
@@ -2275,11 +2260,11 @@ RectTransform:
   m_Father: {fileID: 172259814}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 14, y: -35.86217}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 14.119995, y: 0.3701477}
   m_SizeDelta: {x: 316.24, y: 405.0843}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &962396193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2306,85 +2291,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!1 &1014700274
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1014700275}
-  - component: {fileID: 1014700277}
-  - component: {fileID: 1014700276}
-  m_Layer: 5
-  m_Name: Text
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1014700275
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1014700274}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1859566000}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1014700276
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1014700274}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: Button
---- !u!222 &1014700277
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1014700274}
-  m_CullTransparentMesh: 1
 --- !u!1 &1062124124
 GameObject:
   m_ObjectHideFlags: 0
@@ -2455,7 +2361,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Sell
 --- !u!222 &1062124127
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2876,7 +2782,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000015258789, y: 0}
+  m_AnchoredPosition: {x: -0.000030517578, y: 0}
   m_SizeDelta: {x: 184.25781, y: 81.3909}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1385283499
@@ -3062,7 +2968,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Buy
 --- !u!222 &1438612343
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3547,8 +3453,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 66.299995, y: -8.5}
-  m_SizeDelta: {x: 54.298996, y: 24.112}
+  m_AnchoredPosition: {x: 87.736, y: -8.5}
+  m_SizeDelta: {x: 79.83, y: 24.112}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1798881124
 MonoBehaviour:
@@ -3700,15 +3606,14 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1014700275}
+  m_Children: []
   m_Father: {fileID: 691909802}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 9.7422, y: -0.4871}
-  m_SizeDelta: {x: 610.0887, y: 340.7756}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 9.534199, y: 0.33351135}
+  m_SizeDelta: {x: 553.2452, y: 276.4012}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1859566001
 MonoBehaviour:

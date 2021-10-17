@@ -15,10 +15,8 @@ public class PigMarket : MonoBehaviour
     {
         _playerInventory = GetComponent<PlayerInventory>();
         _pigPriceManager = GetComponent<PigPriceManager>();
-        foreach(Pig pigType in pigTypes)
-        {
-            pigType.SetCurrentPrice(pigType.initialPrice);//se no primeiro round e nao houver jogo salvo
-        }
+        StartPigTypes();
+        
     }
 
     // Update is called once per frame
@@ -67,7 +65,20 @@ public class PigMarket : MonoBehaviour
         return null;
     }
 
-    
+    public void StartPigTypes()
+    {
+        foreach (Pig pigType in pigTypes)
+        {
+            pigType.SetCurrentPrice(pigType.initialPrice);//se no primeiro round e nao houver jogo salvo
+            int option = UnityEngine.Random.Range(0, 2);
+            if (option == 0)
+            {
+                pigType.SetPreviousPrice(pigType.GetCurrentPrice() * UnityEngine.Random.Range(0.1f, 0.98f));
+            }
+            else
+                pigType.SetPreviousPrice(pigType.GetCurrentPrice() * UnityEngine.Random.Range(1.1f, 1.98f));
+        }
+    }
 
 
 }
