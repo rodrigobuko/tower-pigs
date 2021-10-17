@@ -8,7 +8,7 @@ public class PigObject : MonoBehaviour
     // Start is called before the first frame update
 
 
-    public float ReturnMoney()
+    public float ReturnMoney()//valores aleatorios, precisa de balanceamento
     {
         switch (pigType.investimentType)
         {
