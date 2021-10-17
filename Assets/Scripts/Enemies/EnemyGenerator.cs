@@ -23,13 +23,32 @@ public class EnemyGenerator : MonoBehaviour {
 
     [SerializeField] private GameObject EnemySmallPrefab;
     [SerializeField] private GameObject EnemyBigPrefab;
+    [SerializeField] private GameObject WarpPoint;
     [SerializeField] private float radius;
     private int wave = 0;
     [SerializeField] private NavMeshSurface navSurface;
     public List<EnemyWave> enemyWaves;
-  
+    [NonSerialized] private List<Vector3> currentWarpPos;
+    [NonSerialized] private List<GameObject> currentWarpObjects;
     private void Start() {
         wave = 0;
+        currentWarpPos = new List<Vector3>();
+        currentWarpObjects = new List<GameObject>();
+    }
+
+    public void ShowPreviousWarpPoints() {
+        Camera.main.orthographicSize = 10;
+        currentWarpPos.Clear();
+        var hords = enemyWaves[wave].hords;
+        foreach (var hord in hords) {
+            currentWarpPos.Add(GetWarpPoint());
+        }
+
+        foreach (var warpPos in currentWarpPos) {
+           var warp = Instantiate(WarpPoint);
+           currentWarpObjects.Add(warp);
+           warp.transform.position = warpPos;
+        }
     }
 
     // Update is called once per frame
@@ -40,18 +59,21 @@ public class EnemyGenerator : MonoBehaviour {
     private IEnumerator CreateWave() {
         yield return new WaitForSeconds(0.5f);
         EnemyWave enemyWave = enemyWaves[wave];
+        var hordNumber = 0;
         foreach (var hord in enemyWave.hords) {
-            var warpPos = GetWarpPoint();
+            var warpPos = currentWarpPos[hordNumber];
             for (int i = 0; i < hord.smalls; i++) {
-                CreateEnemy(EnemyType.Small, warpPos );
+                CreateEnemy(EnemyType.Small, warpPos);
                 yield return new WaitForSeconds(0.3f);
             }
             for (int i = 0; i < hord.bigs; i++) {
                 CreateEnemy(EnemyType.Big, warpPos);
                 yield return new WaitForSeconds(0.3f);
             }
+            hordNumber++;
         }
         wave++;
+        DeleteWarpObjects();
     }
 
     private void CreateEnemy(EnemyType enemyType, Vector3 position) {
@@ -79,7 +101,15 @@ public class EnemyGenerator : MonoBehaviour {
         float angle = Mathf.Deg2Rad * Random.Range(0, 360);
         return new Vector3(radius*Mathf.Cos(angle), 0 , radius*Mathf.Sin(angle));
     }
-    
+
+
+    private void DeleteWarpObjects() {
+        foreach (var warp in currentWarpObjects) {
+            Destroy(warp);
+        }
+        currentWarpObjects.Clear();
+        
+    }
 }
 
 
