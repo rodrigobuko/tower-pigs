@@ -8,34 +8,59 @@ public class TurretAction : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private TowerSkill towerSkill;
+    [SerializeField] private GameObject towerRotation;
+    [SerializeField] private GameObject bulletPoint;
     private List<Enemy> enemiesAffected;
+    private List<GameObject> currentBullets;
     private bool isAttacking;
-
+    private bool notDetected;
+    
     private void Start() {
         enemiesAffected = new List<Enemy>();
+        currentBullets = new List<GameObject>();
+        notDetected = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (CheckEnemyInRange()) {
-            if (!isAttacking) {
-                isAttacking = true;
-                StartCoroutine(PerformAttack());
+        if (notDetected) {
+            if (CheckEnemyInRange()) {
+                if (!isAttacking) {
+                    isAttacking = true;
+                    if (towerSkill.delay > 0) {
+                        StartCoroutine(PerformDelay());
+                    } else {
+                        StartCoroutine(PerformAttack(enemiesAffected));
+                    }
+                   
+                }
+            } else {
+                ResetState();
             }
-            
         }
+
     }
 
+    private IEnumerator PerformDelay() {
+        yield return new WaitForSecondsRealtime(towerSkill.delay);
+        if (CheckEnemyInRange()) {
+            Debug.Log("OBA");
+            StartCoroutine(PerformAttack(enemiesAffected));
+        }
+        
+    }
     private bool CheckEnemyInRange() {
         var enemyFound = false;
-        var hits = Physics.SphereCastAll(transform.position, towerSkill.range, Vector3.forward, 10, LayerMask.GetMask("Enemy"));
+        var hits = Physics.OverlapSphere(transform.position, towerSkill.range);
         if (hits.Length > 0) {
             enemiesAffected.Clear();
             foreach (var hit in hits) {
-                if (hit.collider.gameObject.GetComponent<Enemy>() != null) {
+                if (hit.gameObject.GetComponent<Enemy>() != null) {
                     enemyFound = true;
-                    enemiesAffected.Add(hit.collider.gameObject.GetComponent<Enemy>());
+                    notDetected = false;
+                    
+                    enemiesAffected.Add(hit.gameObject.GetComponent<Enemy>());
                 }
             }
         }
@@ -45,28 +70,47 @@ public class TurretAction : MonoBehaviour
 
     private void Attack(Enemy enemy) {
         enemy.UpdateLife(towerSkill.damage);
-        enemy.UpdateVelocity(towerSkill.velocityReduce);
+        enemy.UpdateVelocity(towerSkill.velocityReduce, towerSkill.stunTime);
     }
     
     private void AttackBullet(Enemy enemy) {
+        if (towerRotation != null) {
+            transform.LookAt(enemy.transform, Vector3.up);
+        }
         var bulletObject = Instantiate(towerSkill.bullet);
-        bulletObject.transform.position = gameObject.transform.position;
+        if (bulletPoint != null) {
+            bulletObject.transform.position = bulletPoint.transform.position;
+        } else {
+            bulletObject.transform.position = gameObject.transform.position;
+        }
+        currentBullets.Add(bulletObject);
         var bullet = bulletObject.GetComponent<Bullet>();
         bullet.myTower = towerSkill;
         bullet.target = enemy.gameObject;
         bullet.activated = true;
     }
 
-    private IEnumerator PerformAttack() {
+    private IEnumerator PerformAttack(List<Enemy> enemies) {
         if (towerSkill.singleTarget) {
-            AttackBullet(enemiesAffected.First());
+            AttackBullet(enemies.First());
         } else {
-            foreach (var enemy in enemiesAffected) {
+            foreach (var enemy in enemies) {
                 Attack(enemy);
             }
         }
         yield return new WaitForSecondsRealtime(towerSkill.cooldown);
-        isAttacking = false; 
+        isAttacking = false;
+        notDetected = true; 
     }
-    
+
+    private void OnDrawGizmosSelected() {
+        Gizmos.DrawWireSphere(transform.position,towerSkill.range);
+    }
+
+    private void ResetState() {
+        foreach (var bullet in currentBullets) {
+            Destroy(bullet);
+        }
+        currentBullets.Clear();
+    }
 }
