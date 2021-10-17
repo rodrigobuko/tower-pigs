@@ -37,15 +37,34 @@ public class PigPriceManager : MonoBehaviour
             int option = UnityEngine.Random.Range(0, 2);
             if (option == 0)//preco diminui
             {
-                pigType.SetCurrentPrice(pigType.GetCurrentPrice()*UnityEngine.Random.Range(0.3f, 0.9f));
-                pigType.AddPriceChange(-1);
+                pigType.SetPreviousPrice(pigType.GetCurrentPrice());
+                pigType.SetCurrentPrice(pigType.GetCurrentPrice()*UnityEngine.Random.Range(0.1f, 0.9f));
             }
             else//preco aumenta
             {
+                pigType.SetPreviousPrice(pigType.GetCurrentPrice());
                 pigType.SetCurrentPrice(pigType.GetCurrentPrice() * UnityEngine.Random.Range(1.1f, 1.9f));
-                pigType.AddPriceChange(1);
             }
         }
+    }
+
+    public int CheckPriceChange( Pig pigType)
+    {
+        if (pigType.GetCurrentPrice() - pigType.GetPreviousPrice() > 0)
+            return 1;
+        else
+            return -1;
+    }
+
+    public float ReturnChangePercent(int round, Pig pigType)
+    {
+        float oldPrice;
+        if (round == 0 && pigType.GetPreviousPrice()==0)
+        {
+            return CheckPriceChange(pigType) * UnityEngine.Random.Range(0f, 100f);
+        }
+        oldPrice = pigType.GetPreviousPrice();
+        return (pigType.GetCurrentPrice() - oldPrice) / 100;
     }
 
 
