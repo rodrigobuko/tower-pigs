@@ -2,12 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum KindOfPig{
+    lowRisk,
+    highRisk
+}
 [CreateAssetMenu]
 public class Pig : ScriptableObject
 {
     public string pigName;
     public string description;
     public float initialPrice;
+    public KindOfPig kindOfPig;
+    public Sprite sprite;
     private float _currentPrice;
     private List<float> _pricesPerRound;
     private List<float> _priceHistory;
