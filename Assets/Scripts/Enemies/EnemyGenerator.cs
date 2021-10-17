@@ -33,6 +33,7 @@ public class EnemyGenerator : MonoBehaviour {
     [NonSerialized] private List<Vector3> currentWarpPos;
     [NonSerialized] private List<GameObject> currentWarpObjects;
     [SerializeField] private UnityEvent EndRoundEvent;
+    [SerializeField] private UnityEvent GameOverEvent;
     private bool roundStarted;
     private void Start() {
         wave = 0;
@@ -72,23 +73,28 @@ public class EnemyGenerator : MonoBehaviour {
 
     private IEnumerator CreateWave() {
         yield return new WaitForSeconds(0.5f);
-        EnemyWave enemyWave = enemyWaves[wave];
-        var hordNumber = 0;
-        foreach (var hord in enemyWave.hords) {
-            var warpPos = currentWarpPos[hordNumber];
-            for (int i = 0; i < hord.smalls; i++) {
-                CreateEnemy(EnemyType.Small, warpPos);
-                yield return new WaitForSeconds(0.3f);
+        if (wave >= enemyWaves.Count) {
+            GameOverEvent.Invoke();
+        } else {
+            EnemyWave enemyWave = enemyWaves[wave];
+            var hordNumber = 0;
+            foreach (var hord in enemyWave.hords) {
+                var warpPos = currentWarpPos[hordNumber];
+                for (int i = 0; i < hord.smalls; i++) {
+                    CreateEnemy(EnemyType.Small, warpPos);
+                    yield return new WaitForSeconds(0.3f);
+                }
+                for (int i = 0; i < hord.bigs; i++) {
+                    CreateEnemy(EnemyType.Big, warpPos);
+                    yield return new WaitForSeconds(0.3f);
+                }
+                hordNumber++;
             }
-            for (int i = 0; i < hord.bigs; i++) {
-                CreateEnemy(EnemyType.Big, warpPos);
-                yield return new WaitForSeconds(0.3f);
-            }
-            hordNumber++;
+            wave++;
+            roundStarted = true;
+            DeleteWarpObjects();
         }
-        wave++;
-        roundStarted = true;
-        DeleteWarpObjects();
+
     }
 
     private void CreateEnemy(EnemyType enemyType, Vector3 position) {

@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class MenuHandler : MonoBehaviour
 {
     private void Start() {
+        AudioManager.instance.Stop("Game");
         AudioManager.instance.Play("Menu");
     }
 
