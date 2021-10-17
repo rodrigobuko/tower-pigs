@@ -31,6 +31,9 @@ public class GameLogic : MonoBehaviour {
     [SerializeField] private UnityEvent StartEnemyWaveEvent;
     [SerializeField] private Text StateText;
     [SerializeField] private Button StateButton;
+    
+    [SerializeField] private GameObject TowerStoreButton;
+    [SerializeField] private GameObject PigStoreButton;
 
     // pigs
     [SerializeField] private PigPriceManager pigPriceManager;
@@ -40,6 +43,8 @@ public class GameLogic : MonoBehaviour {
     private void Start() {
         currentState = GameState.Stoped;
         StateText.text = "Iniciar Preparação";
+        PigStoreButton.SetActive(true);
+        TowerStoreButton.SetActive(true);
     }
 
     public void  ActivateTowerInterface() {
@@ -61,6 +66,8 @@ public class GameLogic : MonoBehaviour {
                 StartPreparationEvent.Invoke();
                 currentState = GameState.Preparation;
                 StateText.text = "Ataque";
+                PigStoreButton.SetActive(false);
+                TowerStoreButton.SetActive(false);
                 break;
             case GameState.Preparation:
                 StartEnemyWaveEvent.Invoke();
@@ -68,12 +75,16 @@ public class GameLogic : MonoBehaviour {
                 StateText.text = "Batalha";
                 AudioManager.instance.Stop("Menu");
                 AudioManager.instance.Play("Game");
+                PigStoreButton.SetActive(true);
+                TowerStoreButton.SetActive(true);
                 StateButton.interactable = false;
                 break;
             case GameState.EnemyWave:
                 currentState = GameState.Stoped;
                 StateText.text = "Iniciar Preparação";
                 StateButton.interactable = true;
+                PigStoreButton.SetActive(true);
+                TowerStoreButton.SetActive(true);
                 AudioManager.instance.Stop("Game");
                 AudioManager.instance.Play("Menu");
                 
