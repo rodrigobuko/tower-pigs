@@ -46,6 +46,11 @@ public class PigMarketUI : MonoBehaviour
         MarketUI.SetActive(true);
     }
 
+    public void CloseMarket()
+    {
+        MarketUI.SetActive(false);
+    }
+
     public void ClosePigPopUp()
     {
         PigPopUp.SetActive(false);
