@@ -42,3 +42,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Fog of War
+    uniqueID: 4157022125
+    locked: 0
