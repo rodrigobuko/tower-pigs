@@ -6,12 +6,15 @@ using UnityEngine.UI;
 public class PlayerInventory : MonoBehaviour
 {
     public float money;
+    public float pigMoney;
+    public int life;
     [HideInInspector]public float price;
     public Text moneyText;
     // Start is called before the first frame update
     void Start()
     {
         money = 500f;
+        pigMoney = 0f;
     }
 
     // Update is called once per frame
@@ -24,4 +27,5 @@ public class PlayerInventory : MonoBehaviour
     {
         money -= price;
     }
+
 }

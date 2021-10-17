@@ -15992,6 +15992,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   money: 0
+  pigMoney: 0
+  life: 0
   price: 0
   moneyText: {fileID: 1188311756}
 --- !u!4 &621817421
@@ -53495,18 +53497,18 @@ MonoBehaviour:
   city: {fileID: 2130445796}
   EnemySmallPrefab: {fileID: 1354206362006020087, guid: 344cf56bbd5d44379a7912b16993b578, type: 3}
   EnemyBigPrefab: {fileID: 1917694436909681485, guid: 8da488e2dc2ff4378b9ef151135ed496, type: 3}
-  WarpPoint: {fileID: 3744406135577798400, guid: ab7966b0dac6f4ed3bbbdf833b442f5b, type: 3}
+  WarpPoint: {fileID: 1301608742867994679, guid: 132c62e4a993f3a43a0cf40d3d4244ca, type: 3}
   radius: 10
   navSurface: {fileID: 544595619}
   enemyWaves:
   - hords:
     - smalls: 2
-      bigs: 0
+      bigs: 1
   - hords:
     - smalls: 3
       bigs: 0
     - smalls: 2
-      bigs: 0
+      bigs: 3
   EndRoundEvent:
     m_PersistentCalls:
       m_Calls:

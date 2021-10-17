@@ -75,7 +75,8 @@ public class TurretAction : MonoBehaviour
     
     private void AttackBullet(Enemy enemy) {
         if (towerRotation != null) {
-            transform.LookAt(enemy.transform, Vector3.up);
+            towerRotation.transform.LookAt(enemy.transform, Vector3.up);
+            towerRotation.transform.rotation = Quaternion.Euler(0f, towerRotation.transform.rotation.eulerAngles.y, 0f);
         }
         var bulletObject = Instantiate(towerSkill.bullet);
         if (bulletPoint != null) {
