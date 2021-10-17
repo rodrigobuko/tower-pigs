@@ -26,6 +26,7 @@ public class PigMovement : MonoBehaviour {
 
         void Update () {
             if (gameObject.transform.position != startPoint) {
+                gameObject.transform.LookAt(-startPoint);
                 gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, startPoint, speed);
             } else {
                 var aux = startPoint;
