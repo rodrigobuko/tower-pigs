@@ -25,7 +25,7 @@ public class PigMarket : MonoBehaviour
         
     }
 
-    public void BuyPig(GameObject pigWanted)
+    public void BuyPig(GameObject pigWanted)//o porco não está surgindo no cercadinho
     {
         if (!pigWanted)
             return;

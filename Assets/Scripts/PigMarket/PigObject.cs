@@ -5,8 +5,6 @@ using UnityEngine;
 public class PigObject : MonoBehaviour
 {
     public Pig pigType;
-    // Start is called before the first frame update
-
 
     public float ReturnMoney()//valores aleatorios, precisa de balanceamento
     {

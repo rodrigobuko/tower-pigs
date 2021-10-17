@@ -23,7 +23,7 @@ public class PigPriceManager : MonoBehaviour
         return null;
     }
 
-    public void ChangePigsPrice()//versao muito simplificada de um possivel jeito de alterar o preco dos porcos
+    public void ChangePigsPrice()//versao muito simplificada de um possivel jeito de alterar o preco dos porcos; Rodar a cada fim de rodada
     {
         foreach (Pig pigType in pigTypes)
         {
@@ -32,12 +32,34 @@ public class PigPriceManager : MonoBehaviour
             if (option == 0)//preco diminui
             {
                 pigType.SetPreviousPrice(pigType.currentPrice);
-                pigType.SetCurrentPrice(pigType.currentPrice*UnityEngine.Random.Range(0.1f, 0.9f));
+                switch (pigType.investimentType)
+                {
+                    case PigInvestimentType.HighRisk://acoes mais arriscadas podem ter queda de preco maior
+                        pigType.SetCurrentPrice(pigType.currentPrice * UnityEngine.Random.Range(0.1f, 0.9f));
+                        break;
+                    case PigInvestimentType.MediumRisk:
+                        pigType.SetCurrentPrice(pigType.currentPrice * UnityEngine.Random.Range(0.5f, 0.9f));
+                        break;
+                    default://smallRisk
+                        pigType.SetCurrentPrice(pigType.currentPrice * UnityEngine.Random.Range(0.7f, 0.9f));
+                        break;
+                }
             }
             else//preco aumenta
             {
                 pigType.SetPreviousPrice(pigType.currentPrice);
-                pigType.SetCurrentPrice(pigType.currentPrice * UnityEngine.Random.Range(1.1f, 1.9f));
+                switch (pigType.investimentType)//acoes mais arriscadas podem ter aumentos de preço maior
+                {
+                    case PigInvestimentType.HighRisk:
+                        pigType.SetCurrentPrice(pigType.currentPrice * UnityEngine.Random.Range(1.1f, 1.9f));
+                        break;
+                    case PigInvestimentType.MediumRisk:
+                        pigType.SetCurrentPrice(pigType.currentPrice * UnityEngine.Random.Range(1.1f, 1.5f));
+                        break;
+                    default://smallRisk
+                        pigType.SetCurrentPrice(pigType.currentPrice * UnityEngine.Random.Range(1.1f, 1.3f));
+                        break;
+                }
             }
         }
     }
