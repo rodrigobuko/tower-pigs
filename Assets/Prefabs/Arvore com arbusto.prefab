@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7449382512785874727}
   - component: {fileID: 2184362556276667489}
   - component: {fileID: 5067662211708053757}
+  - component: {fileID: 4117424106424693764}
   m_Layer: 0
   m_Name: Arvore com arbusto
   m_TagString: Untagged
@@ -62,6 +63,19 @@ MonoBehaviour:
   m_Area: 1
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
+--- !u!65 &4117424106424693764
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7449382512785874724}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.748872, y: 1.5019071, z: 1}
+  m_Center: {x: -0.081425875, y: 0.25095367, z: 0}
 --- !u!1001 &7449382511750696032
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,10 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
+using UnityEngine.UI;
 
 public enum GameState {
     Stoped,
+    Preparation,
     PlacingTower,
     EnemyWave
 }
@@ -22,10 +25,20 @@ public class GameLogic : MonoBehaviour {
     [SerializeField] private GameObject stunPrefab;
     [SerializeField] private GameObject shootPrefab;
     [SerializeField] private GameObject laserPrefab;
-
+    
+    [SerializeField] private UnityEvent StartPreparationEvent;
+    [SerializeField] private UnityEvent StartEnemyWaveEvent;
+    [SerializeField] private Text StateText;
+    [SerializeField] private Button StateButton;
     private GameState currentState;
+
+    private void Start() {
+        currentState = GameState.Stoped;
+        StateText.text = "Iniciar Preparação";
+    }
+
     public void  ActivateTowerInterface() {
-        if (currentState == GameState.Stoped) {
+        if (currentState == GameState.Preparation) {
             gridCreator.ActivateGrid();
             currentState = GameState.PlacingTower;
         }
@@ -36,7 +49,28 @@ public class GameLogic : MonoBehaviour {
             currentState = GameState.EnemyWave;
         }
     }
-    
+
+    public void ChangeState() {
+        switch (currentState) {
+            case GameState.Stoped:
+                StartPreparationEvent.Invoke();
+                currentState = GameState.Preparation;
+                StateText.text = "Ataque";
+                break;
+            case GameState.Preparation:
+                StartEnemyWaveEvent.Invoke();
+                currentState = GameState.EnemyWave;
+                StateText.text = "Finalizar Turno";
+                StateButton.interactable = false;
+                break;
+            case GameState.EnemyWave:
+                currentState = GameState.Stoped;
+                StateText.text = "Iniciar Preparação";
+                StateButton.interactable = true;
+                break;
+        }
+    }
+
     void Update()
     {
         if (currentState == GameState.PlacingTower) {
@@ -60,7 +94,7 @@ public class GameLogic : MonoBehaviour {
         turretObject.transform.position = gridCell.transform.position;
         gridCell.occupied = true;
         gridCreator.DeactivateGrid();
-        currentState = GameState.Stoped;
+        currentState = GameState.Preparation;
     }
 
     public void ChooseTower(int towerType)

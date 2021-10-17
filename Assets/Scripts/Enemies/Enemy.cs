@@ -10,7 +10,8 @@ public class Enemy : MonoBehaviour {
 
     public float life;
     public float velocity;
-    
+    public int damageOnBase;
+    public EnemyGenerator enemyGenerator;
     private NavMeshAgent navMeshAgent;
     // Start is called before the first frame update
     private void Awake() {
@@ -47,6 +48,13 @@ public class Enemy : MonoBehaviour {
     private IEnumerator ReturnVelocity(float oldVelocity, float stunTime) {
         yield return new WaitForSecondsRealtime(stunTime);
         UpdateVelocity(oldVelocity, 0);
+    }
 
+    private void OnTriggerEnter(Collider other) {
+        if (other.CompareTag("Base")) {
+            other.gameObject.GetComponent<BaseBehavior>().TakeDamage(damageOnBase);
+            enemyGenerator.enemyCount--;
+            Destroy(gameObject);
+        }
     }
 }

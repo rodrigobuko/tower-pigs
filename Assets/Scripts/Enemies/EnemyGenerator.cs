@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 public enum EnemyType {
@@ -28,16 +29,29 @@ public class EnemyGenerator : MonoBehaviour {
     private int wave = 0;
     [SerializeField] private NavMeshSurface navSurface;
     public List<EnemyWave> enemyWaves;
+    [NonSerialized] public int enemyCount;
     [NonSerialized] private List<Vector3> currentWarpPos;
     [NonSerialized] private List<GameObject> currentWarpObjects;
+    [SerializeField] private UnityEvent EndRoundEvent;
+    private bool roundStarted;
     private void Start() {
         wave = 0;
         currentWarpPos = new List<Vector3>();
         currentWarpObjects = new List<GameObject>();
+        enemyCount = 0;
+    }
+
+    private void Update() {
+        if (roundStarted) {
+            if (enemyCount == 0) {
+                EndRoundEvent.Invoke();
+                roundStarted = false;
+            }
+        }
     }
 
     public void ShowPreviousWarpPoints() {
-        Camera.main.orthographicSize = 10;
+        Camera.main.orthographicSize = 9;
         currentWarpPos.Clear();
         var hords = enemyWaves[wave].hords;
         foreach (var hord in hords) {
@@ -73,6 +87,7 @@ public class EnemyGenerator : MonoBehaviour {
             hordNumber++;
         }
         wave++;
+        roundStarted = true;
         DeleteWarpObjects();
     }
 
@@ -83,7 +98,9 @@ public class EnemyGenerator : MonoBehaviour {
                 big.transform.position = position;
                 navSurface.BuildNavMesh();
                 var enemyBig = big.GetComponent<Enemy>();
+                enemyCount++;
                 enemyBig.followPoint = city.transform.position;
+                enemyBig.enemyGenerator = this;
                 enemyBig.SetUpNavAgent();
                 break;
             case EnemyType.Small:
@@ -91,7 +108,9 @@ public class EnemyGenerator : MonoBehaviour {
                 small.transform.position = position;
                 navSurface.BuildNavMesh();
                 var enemySmall = small.GetComponent<Enemy>();
+                enemyCount++;
                 enemySmall.followPoint = city.transform.position;
+                enemySmall.enemyGenerator = this;
                 enemySmall.SetUpNavAgent();
                 break;
         }
@@ -108,7 +127,6 @@ public class EnemyGenerator : MonoBehaviour {
             Destroy(warp);
         }
         currentWarpObjects.Clear();
-        
     }
 }
 
